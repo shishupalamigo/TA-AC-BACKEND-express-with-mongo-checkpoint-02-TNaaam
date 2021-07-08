@@ -1,0 +1,66 @@
+<%- include('../partials/header') -%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <main>
+      <section class="container-xl p-10 flex flex-col items-center">
+          <h1 class="text-center text-3xl m-5 text-red-500 font-bold">Edit Event Information</h1>
+          <form action="/events/<%= event.id  %>/edit" method="POST" class="border-2 flex flex-col items-center w-2/4 p-5">
+            <fieldset class="mb-5 mt-5 w-full">
+              <input type="text" placeholder="Enter Title" name="title" class="p-3 bg-gray-200 text-black ml-2 border-2 w-full border-gray-400" value="<%= event.title %>"/>
+            </fieldset>
+
+            <fieldset class="mb-5 flex items-center w-full">
+              <textarea
+                name="summary"
+                id="summary"
+                rows="5"
+                class="p-3 bg-gray-200 ml-2 w-full border-2 w-full border-gray-400"
+                placeholder="Summary">
+                <%= event.summary %>
+              </textarea>
+            </fieldset>
+
+            <fieldset class="mb-5 mt-5 w-full">
+              <input type="text" placeholder="Enter Host" name="host" class="p-3 bg-gray-200 text-black ml-2 border-2 w-full border-gray-400" value="<%= event.host %>" />
+            </fieldset>
+
+            <fieldset class="mb-5 mt-5 w-full">
+
+              <input type="text" placeholder="Enter category" name="category" class="p-3 bg-gray-200 text-black ml-2 border-2 w-full border-gray-400" value="<%= event.event_category %>" />
+            </fieldset>
+
+            <fieldset class="mb-5 mt-5 w-full">
+              <label for="start_date" class="mb-2 ml-3">Select Start Date</label>
+
+              <input type="date" name="start_date" class="p-3 bg-gray-200 text-black ml-2 border-2 border-gray-400 w-full" value="<%= event.start_date %>" />
+            </fieldset>
+
+            <fieldset class="mb-5 mt-5 w-full">
+              <label for="end_date" class="mb-4 ml-3">End Date</label>
+
+              <input type="date" name="end_date" class="p-3 bg-gray-200 text-black ml-2 border-2 w-full border-gray-400" value="<%= event.end_date %>" />
+            </fieldset>
+
+            <fieldset class="mb-5 mt-5 w-full">
+              <input type="text" placeholder="Enter location" name="location" class="p-3 bg-gray-200 text-black ml-2 border-2 border-gray-400 w-full" value="<%= event.location %>" />
+            </fieldset>
+
+            <button class="px-3 py-2 bg-green-500 rounded text-white font-bold hover:bg-blue-700" type="submit">Update Event</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>
+<%- include('../partials/footer') -%>
