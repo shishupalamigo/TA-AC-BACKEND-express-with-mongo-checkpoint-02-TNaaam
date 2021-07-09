@@ -1,0 +1,103 @@
+<%- include('../partials/header') -%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List Of Events</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+      <main class="flex">
+        <aside class="flex-25 mr-10 bg-purple-300 px-10 py-5 w-1/4 rounded h-auto">
+          <h4 class="text-center px-3 py-3 text-xl font-medium">Search by</h4>
+          <hr />
+          <h5 class="text-center text-blue-700 text-xl pb-3 pt-3">Categories</h5>
+          <div class="flex flex-wrap p-5">
+            <% arr.forEach(tag=>{ %>
+            <a
+              href="/events/sort/tags?name=<%= tag  %> "
+              class="mb-5"
+              ><span class="bg-gray-700 border-2 px-2 py-2 rounded text-white ml-2 hover:bg-blue-600 "><%= tag %></span>
+            </a>
+            <% }) %>
+          </div>
+          <hr />
+          <h5 class="text-center text-xl text-blue-700 pb-3 pt-3">Locations</h5>
+          <div class="flex flex-wrap p-5">
+            <% arrLocations.forEach(tag=>{ %>
+            <a
+              href="/events/sort/location?name=<%= tag  %> "
+              class="mb-5"
+              ><span class="bg-gray-700 border-2 px-2 py-2 rounded text-white ml-2 hover:bg-blue-600 mb-5"><%= tag %></span>
+            </a>
+            <% }) %>
+          </div>
+          <hr />
+          <h5 class="text-center text-blue-700 text-xl pb-3 pt-3">By Date</h5>
+          <div class="flex flex-wrap p-5">
+            <a href="/events/sort/date/acc" class="mb-5"
+              ><span class="bg-gray-700 border-2 px-2 py-2 rounded text-white ml-2 hover:bg-blue-600 mb-5">Ascending</span>
+            </a>
+            <a href="/events/sort/date/dec" class="mb-5"
+              ><span class="bg-gray-700 border-2 px-2 py-2 rounded text-white ml-2 hover:bg-blue-600">Descending</span>
+            </a>
+          </div>
+          <hr class="mt-5" />
+          <div class="flex justify-center mt-5">
+            <a href="/events/" class="">
+              <button class="px-2 py-1 bg-blue-500 rounded text-white text-xsm hover:bg-green-700">
+                Reset Filters
+              </button>
+            </a>
+          </div>
+        </aside>
+
+        <section class="container-xl w-3/4">
+            <h1 class="text-center text-3xl m-5 text-red-500 font-bold">List of Events</h1>
+            <% if(events){ %> <% events.forEach(ele=>{ %>
+            <div class="border-2 p-10 mb-5">
+                <h4 class="text-2xl mb-5"><%= ele.title %></h4>
+                <p><%= ele.summary.slice(0, 150) + '.....' %></p>
+              <div class="mt-5">
+                <a href="/events/<%= ele._id %>">
+                  <button class="px-3 py-2 bg-green-500 rounded text-white font-bold hover:bg-green-700">Details</button>
+                </a>
+              </div>
+            </div>
+            <% }) %> <% } %> <% if(events.length===0){ %>
+            <div class="flex flex-col items-center">
+              <h3 class="mb-5">Currently no Event listed</h3>
+              <h4 class="mb-5">Create new</h4>
+              <a class=" mb-5 px-3 py-2 bg-green-500 rounded text-white font-bold hover:bg-green-700" href="/events/new">Create Event</a>
+            </div>
+            <% } %>
+        </section>
+      </main>
+    </div>
+    <div class="">
+      <section class="container-xl mb-5 mt-5">
+        <div class="flex items-center justify-center">
+                  <a href="/events/new" class="">
+          <button class="px-3 py-2 bg-green-500 rounded text-white font-bold hover:bg-green-700">Add new Event</button>  
+        </a>
+        </div>
+      </section>
+      <footer class="bg-blue-700 p-4 flex items-center justify-center rounded">
+        <p>
+            <small class="text-gray-300">&copy; Copyright </small>
+
+            <Span class="text-sm text-blue-200 font-bold ml-2"> Shishupal Kumar, 2021 </Span>
+        </p>
+      </footer>
+    </div>
+
+  </body>
+</html>
+<!-- <%- include('../partials/footer') -%> -->
